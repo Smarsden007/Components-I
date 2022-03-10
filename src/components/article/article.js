@@ -125,11 +125,11 @@ function articleMaker(articleObj) {
 }
 
 
-date.forEach(article => {
-  document.querySelector('div.articles').appendChild(articleMaker(article));
+data.forEach(article => {
+ document.querySelector('div.articles').appendChild(articleMaker(article));
 })
 
-0
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
