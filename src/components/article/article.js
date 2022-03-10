@@ -90,6 +90,46 @@ const data = [
   }
 ];
 
+function articleMaker(articleObj) {
+  const articleWrapper = document.createElement('div');
+  const articleTittle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleParagraphOne = document.createElement('p');
+  const articleParagraphTwo = document.createElement('p');
+  const articleParagraphThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  articleWrapper.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  articleWrapper.appendChild(articleTittle);
+  articleWrapper.appendChild(articleDate);
+  articleWrapper.appendChild(articleParagraphOne);
+  articleWrapper.appendChild(articleParagraphTwo);
+  articleWrapper.appendChild(articleParagraphThree);
+  articleWrapper.appendChild(expandButton);
+
+  articleTittle.textContent = articleObj.tittle;
+  articleDate.textContent = articleObj.date
+  articleParagraphOne.textContent = articleObj.firstParagraph;
+  articleParagraphTwo.textContent = articleObj.secondParagraph;
+  articleParagraphThree.textContent = articleObj.thirdParagraph;
+  expandButton.textContent = "+";
+  
+  expandButton.addEventListener('click', () =>{
+    articleWrapper.classList.toggle('article-open');
+  })
+
+  return articleWrapper;
+}
+
+
+date.forEach(article => {
+  document.querySelector('div.articles').appendChild(articleMaker(article));
+})
+
+0
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
@@ -107,7 +147,7 @@ const data = [
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 
-  ç¥¥¥¥
+  Step 3: Don't forget to return something from your function!
 
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
